@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:dart_101/dart_101.dart' as dart_101;
 import 'package:dart_101/test_class.dart';
 import 'dart:io';
@@ -61,8 +59,8 @@ void main(List<String> arguments) {
   // print(x);
   // print(z);
 
-  int x = 19;
-  int y = 20;
+  // int x = 19;
+  // int y = 20;
   // int z = 21;
 
   // if (x == y) {
@@ -142,7 +140,12 @@ void main(List<String> arguments) {
   //     print("this is a default block");
   // }
 
-  loopDemo();
+  // loopDemo();
+  // nestedLoopDemo();
+  // numberFuncDemo();
+  // stringFuncDemo();
+  // exceptionHandling();
+  listDemo();
 }
 
 /// This is a documentation comment.
@@ -183,13 +186,13 @@ void variablesDemo() {
   // print(sum);
 
   //let's talk about runtimeType
-  var x = "3";
-  var y = 3;
-  print(x);
-  x = "James";
-  print(x);
-  print(x.runtimeType); //gives you the type of the variable at runtyime
-  print(y.runtimeType);
+  // var x = "3";
+  // var y = 3;
+  // print(x);
+  // x = "James";
+  // print(x);
+  // print(x.runtimeType); //gives you the type of the variable at runtyime
+  // print(y.runtimeType);
 }
 
 void typeConversionDemo() {
@@ -252,5 +255,156 @@ void loopDemo() {
       continue; //skips the current iteration
     }
     print(x);
+  }
+}
+
+nestedLoopDemo() {
+  List<List<int>> nums = [
+    [50, 30, 23, 40, 50],
+    [2, 4, 6, 8, 10],
+    [1, 3, 5, 7, 9]
+  ];
+
+  String numsString = "";
+  for (int i = 0; i < nums.length; i++) {
+    // print(nums[i]);
+    for (int j = 0; j < nums[i].length; j++) {
+      // print(nums[i][j]);
+      if (j == nums[i].length - 1) {
+        numsString += "${nums[i][j]}.";
+      } else {
+        numsString += "${nums[i][j]}, ";
+      }
+    }
+    print("iteration $i: $numsString\n");
+    numsString = "";
+  }
+}
+
+void numberFuncDemo() {
+  int num = 21;
+  int num1 = 21;
+  double num2 = 21.5;
+
+  bool isEvent = num.isEven;
+  bool isOdd = num.isOdd;
+  int absoluteValue = num.abs();
+  int comparingDemo = num.compareTo(num1);
+  int hasCodeValue = num.hashCode;
+  String toStringAsExpVal = num.toStringAsExponential(2);
+  double roundedDouble = num2.roundToDouble();
+  int roundedInt = num2.round();
+
+  print("$num is even: $isEvent");
+  print("$num is odd: $isOdd");
+  print("Absolute value of $num: $absoluteValue");
+  print("$num compare to $num1: $comparingDemo");
+  print("hashCode of $num: $hasCodeValue");
+  print("toStringAsExponential of $num: $toStringAsExpVal");
+  print("Rounded double of $num2: $roundedDouble");
+  print("Rounded int value of $num2: $roundedInt");
+}
+
+void stringFuncDemo() {
+  String name = "James";
+  String sentence = "I am a student, and I am learning Dart.";
+
+  bool isSchoolPresent = name.contains("J");
+  var isSentenceComplete = sentence.endsWith(".");
+  int indexOfI = sentence.indexOf("t");
+  String newString = sentence.replaceAll("", "T");
+
+  // print("school presence status: $isSchoolPresent");
+  // print("isSentenceComplete: $isSentenceComplete");
+  // print("indexOfI: $indexOfI");
+  // print("Replaced String: $newString");
+
+  //+250786024097  //white space
+  String phoneNumber = "+250 786 024 097 ";
+  print("Lenght before trimming: ${phoneNumber.length}");
+  //clean space
+  phoneNumber = phoneNumber.trim();
+  print("Lenght after trimming: ${phoneNumber.length}");
+
+  phoneNumber = phoneNumber.replaceAll(" ", "");
+  print("Phone number after cleaning: $phoneNumber");
+  phoneNumber = phoneNumber.substring(3, phoneNumber.length);
+  print("phone number with no country code: $phoneNumber");
+
+  List<String> split = sentence.split(",");
+  print(
+    "List of words in the sentence: $split and the total words are: ${split.length}",
+  );
+
+  var lowerCaseOfSentence = sentence.toLowerCase();
+  print("Lowercase of the sentence: $lowerCaseOfSentence");
+  var upperCaseOfSentence = sentence.toUpperCase();
+  print("Uppercase of the sentence: $upperCaseOfSentence");
+}
+
+void exceptionHandling() {
+  String name = "10";
+  try {
+    int num = int.parse(name);
+    print(num + 1);
+  } catch (e, st) {
+    print("$e, ${st.toString()}");
+  }
+}
+
+void listDemo() {
+  List<String> names = ["James", "Derrick", "Julius", "Julius", "Julius"];
+  List<MyCustomType> myCustomType = [
+    MyCustomType("John Brown", 9),
+    MyCustomType("Prince", 12),
+    MyCustomType("Mutoni", 30)
+  ];
+  print(myCustomType);
+
+  names.add("Jimmy");
+  // names.remove("Julius");
+  // names.removeAt(2);
+  // names.removeRange(0, 2);
+  // names.removeWhere((element) => true);
+  // names.removeWhere((element) => element == "Julius");
+  // names.clear();
+  print("before update: $names");
+  names.insert(2, "Ally");
+  names.insertAll(2, ["Ally", "Ally", "Ally"]);
+  // names.forEach((element) {
+  //   print(element);
+  // });
+  for (String e in names) {
+    print(e);
+  }
+
+  print("Updated list: $names");
+
+  //2D list
+  List<List<MyCustomType>> names2D = [
+    [MyCustomType("Peter", 3), MyCustomType("name", 3)],
+    [MyCustomType("Peter", 3), MyCustomType("name", 3)],
+    [MyCustomType("Peter", 3), MyCustomType("name", 3)],
+  ];
+
+  for (List<MyCustomType> name in names2D) {
+    for (MyCustomType n in name) {
+      print(n);
+    }
+  }
+}
+
+class MyCustomType {
+  String name = "James";
+  int age = 10;
+
+  MyCustomType(String name, int age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  @override
+  String toString() {
+    return "{Name: $name, Age: $age}";
   }
 }
