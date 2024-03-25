@@ -4,7 +4,7 @@ import 'dart:io';
 
 import 'package:test/test.dart';
 
-void main(List<String> arguments) {
+// void main(List<String> arguments) {
   // print('What is your name?');
   //var name = stdin.readLineSync(); // single line comment.
   //print("the name entered is: $name");
@@ -147,8 +147,8 @@ void main(List<String> arguments) {
   // exceptionHandling();
   // listDemo();
   // setDemo();
-  mapDemo();
-}
+  // mapDemo();
+// }
 
 /// This is a documentation comment.
 /// This is important because it helps your to understand why a specific function was created.
