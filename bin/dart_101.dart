@@ -145,7 +145,9 @@ void main(List<String> arguments) {
   // numberFuncDemo();
   // stringFuncDemo();
   // exceptionHandling();
-  listDemo();
+  // listDemo();
+  // setDemo();
+  mapDemo();
 }
 
 /// This is a documentation comment.
@@ -377,7 +379,6 @@ void listDemo() {
   for (String e in names) {
     print(e);
   }
-
   print("Updated list: $names");
 
   //2D list
@@ -392,6 +393,44 @@ void listDemo() {
       print(n);
     }
   }
+}
+
+void setDemo() {
+  Set<String> names = {"James", "Derrick", "Julius"};
+  Set<String> listOfNamesToAdd = {"Erick", "Ally", "Timo"};
+  // names.add("Jimmy");
+  names.addAll(listOfNamesToAdd);
+  List<String> listofString = ["Erick", "Ally", "Timo"];
+  // names.remove("Julius");
+  //iterating over the set using for-in loop
+  for (String name in names) {
+    print(name);
+  }
+}
+
+void mapDemo() {
+  //Key-value pair
+  //map of int key with String value.
+  Map<int, String> memberOfFamily = {
+    1: "Dad",
+    2: "Mom",
+    9: "Brothers",
+    4: "Sisters",
+    5: "Grandparents"
+  };
+
+  //print all
+  // print(memberOfFamily);
+
+  //print the value of a specified key
+  // print(memberOfFamily[0]);
+
+  Map<String, int> testStringInt = {"num1": 1, "num2": 2, "num3": 3};
+  print(testStringInt);
+  print(testStringInt["num1"]);
+
+  Map<dynamic, dynamic> testDynamic = {"key1": true, "key2": false};
+  print(testDynamic);
 }
 
 class MyCustomType {
